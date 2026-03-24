@@ -13,6 +13,10 @@ export const DEVICE_PRESETS: DevicePreset[] = [
   { id: 'desktop-1080', name: 'Desktop 1080p', width: 1920, height: 1080, category: 'desktop', icon: 'Monitor' },
   { id: 'desktop-1440', name: 'Desktop 1440p', width: 2560, height: 1440, category: 'desktop', icon: 'Monitor' },
   { id: 'ultrawide', name: 'Ultrawide', width: 3440, height: 1440, category: 'ultrawide', icon: 'MonitorPlay' },
+  { id: 'galaxy-fold-folded', name: 'Galaxy Fold (Folded)', width: 280, height: 653, category: 'phone', icon: 'Smartphone' },
+  { id: 'galaxy-fold-unfolded', name: 'Galaxy Fold (Unfolded)', width: 599, height: 653, category: 'tablet', icon: 'Tablet' },
+  { id: 'apple-watch', name: 'Apple Watch', width: 198, height: 242, category: 'watch', icon: 'Watch' },
+  { id: 'tesla-screen', name: 'Tesla Touchscreen', width: 2200, height: 1300, category: 'automotive', icon: 'Car' },
 ];
 
 interface CompareState {

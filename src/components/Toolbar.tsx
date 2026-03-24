@@ -11,6 +11,7 @@ import {
   Minus,
   Eye,
   EyeOff,
+  Download,
 } from 'lucide-react';
 import { useAppStore, DEVICE_PRESETS } from '@/store';
 
@@ -85,6 +86,15 @@ export default function Toolbar() {
         >
           {allVisible ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
           {allVisible ? 'Hide All' : 'Show All'}
+        </button>
+
+        {/* Export all screenshots */}
+        <button
+          onClick={() => alert('Export All Screenshots — coming soon!')}
+          className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border bg-neutral-800 border-neutral-700 text-neutral-400 hover:text-white text-xs font-medium transition-colors"
+        >
+          <Download className="w-3.5 h-3.5" />
+          Export All
         </button>
 
         {/* Dark/light toggle */}

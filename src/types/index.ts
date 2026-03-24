@@ -3,7 +3,7 @@ export interface DevicePreset {
   name: string;
   width: number;
   height: number;
-  category: 'phone' | 'tablet' | 'laptop' | 'desktop' | 'ultrawide';
+  category: 'phone' | 'tablet' | 'laptop' | 'desktop' | 'ultrawide' | 'watch' | 'automotive';
   icon: string;
 }
 
