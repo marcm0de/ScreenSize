@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ScreenSize
+
+A responsive design testing tool. Enter any URL and preview it at multiple screen sizes simultaneously.
+
+![Next.js](https://img.shields.io/badge/Next.js-15-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+## Features
+
+- **Preset Device Sizes** — iPhone SE, iPhone 15, iPhone 15 Pro Max, Samsung Galaxy S24, iPad, iPad Pro, MacBook Air, Desktop 1080p, Desktop 1440p, Ultrawide
+- **Custom Sizes** — Add any width × height
+- **Live Preview** — Real-time iframe previews at each size
+- **Portrait/Landscape** — Rotate any device with one click
+- **Side-by-Side Compare** — Pick two devices and compare them directly
+- **Ruler Overlay** — Pixel grid overlay for precision checking
+- **Screenshot Placeholder** — Per-frame screenshot button (extensible)
+- **Favorites** — Save frequently tested URLs (persisted in localStorage)
+- **Dark/Light Mode** — Toggle between themes
+- **Zoom Control** — Scale all previews from 15% to 100%
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [Next.js 15](https://nextjs.org/) (App Router)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Zustand](https://zustand-demo.pmnd.rs/) (state management)
+- [Framer Motion](https://www.framer.com/motion/) (animations)
+- [Lucide React](https://lucide.dev/) (icons)
 
-## Learn More
+## How It Works
 
-To learn more about Next.js, take a look at the following resources:
+All client-side. URLs are loaded in sandboxed iframes at their native resolution, then CSS-scaled to fit the preview grid. No server-side rendering or proxying — what you see is the real page.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> **Note:** Some sites block iframe embedding via `X-Frame-Options` or CSP headers. This is a browser security feature and cannot be bypassed client-side.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[MIT](LICENSE)
