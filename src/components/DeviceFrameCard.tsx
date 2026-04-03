@@ -1,9 +1,27 @@
 'use client';
 
-import { RotateCw, Camera, Columns2, X } from 'lucide-react';
+import { RotateCw, Camera, Columns2, X, Smartphone, Tablet, Laptop, Monitor } from 'lucide-react';
 import { useAppStore } from '@/store';
 import { DeviceFrame } from '@/types';
 import { motion } from 'framer-motion';
+
+function getBreakpoint(width: number): { label: string; color: string; tailwind: string } {
+  if (width < 640) return { label: 'XS', color: '#ef4444', tailwind: 'sm' };
+  if (width < 768) return { label: 'SM', color: '#f97316', tailwind: 'md' };
+  if (width < 1024) return { label: 'MD', color: '#eab308', tailwind: 'lg' };
+  if (width < 1280) return { label: 'LG', color: '#22c55e', tailwind: 'xl' };
+  if (width < 1536) return { label: 'XL', color: '#3b82f6', tailwind: '2xl' };
+  return { label: '2XL', color: '#8b5cf6', tailwind: '2xl+' };
+}
+
+function getCategoryIcon(category: string) {
+  switch (category) {
+    case 'phone': return <Smartphone className="w-3 h-3" />;
+    case 'tablet': return <Tablet className="w-3 h-3" />;
+    case 'laptop': return <Laptop className="w-3 h-3" />;
+    default: return <Monitor className="w-3 h-3" />;
+  }
+}
 
 interface Props {
   frame: DeviceFrame;
@@ -19,6 +37,7 @@ export default function DeviceFrameCard({ frame }: Props) {
   const scaledW = displayWidth * scale;
   const scaledH = displayHeight * scale;
 
+  const breakpoint = getBreakpoint(displayWidth);
   const isCompareSelected = compare.frameA === frame.id || compare.frameB === frame.id;
 
   const handleCompareClick = () => {
@@ -55,8 +74,15 @@ export default function DeviceFrameCard({ frame }: Props) {
       {/* Header */}
       <div className="flex items-center justify-between px-3 py-2 bg-neutral-800 border-b border-neutral-700">
         <div className="flex items-center gap-2 min-w-0">
+          <span className="text-neutral-400">{getCategoryIcon(preset.category)}</span>
           <span className="text-xs font-medium text-neutral-200 truncate">{preset.name}</span>
           <span className="text-[10px] text-neutral-500 shrink-0">{displayWidth}×{displayHeight}</span>
+          <span
+            className="text-[9px] font-bold px-1.5 py-0.5 rounded-full shrink-0"
+            style={{ backgroundColor: `${breakpoint.color}20`, color: breakpoint.color, border: `1px solid ${breakpoint.color}40` }}
+          >
+            {breakpoint.label}
+          </span>
         </div>
         <div className="flex items-center gap-1 shrink-0">
           {compare.isComparing && (
@@ -113,10 +139,18 @@ export default function DeviceFrameCard({ frame }: Props) {
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-neutral-900/50">
+          <div className="w-full h-full flex flex-col items-center justify-center bg-neutral-900/50 gap-2">
+            <span className="text-neutral-500">{getCategoryIcon(preset.category)}</span>
             <span className="text-neutral-600 text-xs">Enter a URL to preview</span>
+            <span className="text-neutral-700 text-[10px]">{displayWidth}×{displayHeight}</span>
           </div>
         )}
+
+        {/* Breakpoint indicator bar */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-[3px] opacity-60"
+          style={{ backgroundColor: breakpoint.color }}
+        />
 
         {/* Ruler overlay */}
         {showRuler && (
