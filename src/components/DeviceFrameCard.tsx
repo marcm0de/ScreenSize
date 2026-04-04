@@ -148,8 +148,11 @@ export default function DeviceFrameCard({ frame }: Props) {
 
         {/* Breakpoint indicator bar */}
         <div
-          className="absolute bottom-0 left-0 right-0 h-[3px] opacity-60"
-          style={{ backgroundColor: breakpoint.color }}
+          className="absolute bottom-0 left-0 right-0 h-[3px]"
+          style={{
+            background: `linear-gradient(90deg, ${breakpoint.color}00, ${breakpoint.color}, ${breakpoint.color}00)`,
+            opacity: 0.7,
+          }}
         />
 
         {/* Ruler overlay */}
